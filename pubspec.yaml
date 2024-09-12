@@ -1,5 +1,5 @@
 name: paystack_flutter
-description: "A new Flutter package project."
+description: "Flutter package to help you collect payment in your app with Paystack. Makes available payment options like Pay with Bank Transfer, Pay with Bank, Pay with USSD, Pay with Opay, etc."
 version: 0.0.1
 homepage: https://github.com/VhiktorBrown/paystack_flutter
 

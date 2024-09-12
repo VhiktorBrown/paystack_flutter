@@ -82,7 +82,16 @@ class ApiException implements Exception {
         }
       case DioExceptionType.badCertificate:
       case DioExceptionType.badResponse:
-        return OtherExceptions(kBadRequestError);
+        if(err.response?.data != null){
+          if ((err.response!.data as Map)['message'] is Map) {
+            return OtherExceptions(
+              ((err.response!.data as Map)['message'] as Map)['message'],
+            );
+          }
+          return OtherExceptions((err.response!.data as Map)['message']);
+        }else {
+          return OtherExceptions(kBadRequestError);
+        }
       case DioExceptionType.connectionError:
         return InternetConnectException(kInternetConnectionError);
     }
