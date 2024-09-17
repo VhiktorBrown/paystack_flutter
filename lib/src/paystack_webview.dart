@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:paystack_flutter/src/core/network/api_client.dart';
 import 'package:paystack_flutter/src/core/network/api_endpoints.dart';
 import 'package:paystack_flutter/src/core/utils/functions.dart';
@@ -7,6 +6,7 @@ import 'package:paystack_flutter/src/models/paystack_callback.dart';
 import 'package:paystack_flutter/src/models/paystack_request.dart';
 import 'package:paystack_flutter/src/models/paystack_response.dart';
 import 'package:paystack_flutter/src/models/paystack_verification.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class PaystackWebview extends StatefulWidget {
   const PaystackWebview({
@@ -15,6 +15,7 @@ class PaystackWebview extends StatefulWidget {
     required this.amount,
     required this.email,
     this.reference,
+    this.showProgressBar = true,
     this.confirmTransaction = false,
     this.paymentOptions,
     this.currency,
@@ -28,6 +29,7 @@ class PaystackWebview extends StatefulWidget {
   final double amount;
   final String email;
   final String? reference;
+  final bool? showProgressBar;
   final bool? confirmTransaction;
   final List<PaymentOption>? paymentOptions;
   final Currency? currency;
@@ -41,7 +43,6 @@ class PaystackWebview extends StatefulWidget {
 }
 
 class _PaystackWebviewState extends State<PaystackWebview> {
-  late InAppWebViewController _webViewController;
   late PayStackResponse payStackResponse;
   late PaystackCallback callback;
 
@@ -151,45 +152,43 @@ class _PaystackWebviewState extends State<PaystackWebview> {
             }
 
             if (!snapshot.hasData) {
-              return const Center(
-                  child: CircularProgressIndicator());
+              if(widget.showProgressBar != null && widget.showProgressBar!){
+                return const Center(
+                    child: CircularProgressIndicator());
+              }else {
+                return const SizedBox.shrink();
+              }
             }
-            final authorizationUrl = snapshot.data!.authorizationUrl;
-
-            return InAppWebView(
-              initialUrlRequest:
-                  URLRequest(url: WebUri.uri(Uri.parse(authorizationUrl))),
-              onWebViewCreated: (InAppWebViewController controller) {
-                _webViewController = controller;
-              },
-              initialSettings: InAppWebViewSettings(
-                useShouldInterceptRequest: true,
-                javaScriptEnabled: true,
-                javaScriptCanOpenWindowsAutomatically: true,
-                cacheEnabled: true,
-              ),
-              onLoadStart: ((controller, url) {}),
-              shouldOverrideUrlLoading: (controller, navigationAction) async {
-                Uri? uri = navigationAction.request.url;
-                if (uri != null && uri.toString().startsWith(widget.callbackUrl)) {
-                  // Handle callback URL
-                  ///If confirmTransaction is not empty and its true, we confirm
-                  ///if the transaction was successful from Paystack
-                  if(widget.confirmTransaction != null && widget.confirmTransaction!){
-                    await verifyTransaction().then((value) {
-                      //Navigator.pop(context);
-                    });
-                  }else {
-                    Navigator.pop(context);
-                    //this means the developer doesn't want to confirm from Paystack.
-                    widget.onSuccess(callback);
-                  }
-                  // Close the webview after handling callback
-                  _webViewController.goBack();
-                  return NavigationActionPolicy.CANCEL;
-                }
-                return NavigationActionPolicy.ALLOW;
-              },
+            final controller = WebViewController()
+              ..setJavaScriptMode(JavaScriptMode.unrestricted)
+              ..setUserAgent("Flutter;Webview")
+              ..setNavigationDelegate(
+                NavigationDelegate(
+                  onNavigationRequest: (request) async {
+                      String? uri = request.url;
+                      if (uri.toString().startsWith(widget.callbackUrl)) {
+                        // Handle callback URL
+                        ///If confirmTransaction is not empty and its true, we confirm
+                        ///if the transaction was successful from Paystack
+                        if(widget.confirmTransaction != null && widget.confirmTransaction!){
+                          await verifyTransaction().then((value) {
+                            //Navigator.pop(context);
+                          });
+                        }else {
+                          Navigator.pop(context);
+                          //this means the developer doesn't want to confirm from Paystack.
+                          widget.onSuccess(callback);
+                        }
+                        // Close the webview after handling callback
+                        return NavigationDecision.navigate;
+                      }
+                    return NavigationDecision.navigate;
+                  },
+                ),
+              )
+              ..loadRequest(Uri.parse(snapshot.data!.authorizationUrl));
+            return WebViewWidget(
+              controller: controller,
             );
           },
         ),

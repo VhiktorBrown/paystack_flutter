@@ -13,11 +13,12 @@ class PaystackFlutter {
   ///
   /// - [context] The current build context.
   /// - [secretKey] Your Paystack secret key.
-  /// - [amount] The amount to be charged in the smallest currency unit.
+  /// - [amount] The amount to be charged in the smallest currency unit. If amount is 600, multiply by 100(600*100)
   /// - [email] The customer's email address.
   /// - [callbackUrl] The URL to which Paystack will redirect the user after the transaction.
   /// - [onSuccess] A callback function to be called when the payment is successful.
   /// - [onCancelled] A callback function to be called when the payment is canceled.
+  /// - [showProgressBar] If true, it shows progress bar to inform user an action is in progress when getting checkout link from Paystack.
   ///
   /// **Optional parameters:**
   ///
@@ -59,6 +60,9 @@ class PaystackFlutter {
     /// A custom reference for the transaction.
     String? reference,
 
+    /// Shows progress bar if true, when fetching authorization URL from Paystack.
+    bool? showProgressBar,
+
     /// A list of payment options allowed for the transaction.
     /// See the documentation for available options.
     List<PaymentOption>? paymentOptions,
@@ -90,6 +94,7 @@ class PaystackFlutter {
           email: email,
           amount: amount,
           reference: reference,
+          showProgressBar: false,
           confirmTransaction: confirmTransaction,
           paymentOptions: paymentOptions,
           currency: currency,

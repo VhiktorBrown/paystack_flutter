@@ -42,10 +42,11 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: (){
                 PaystackFlutter().pay(
                     context: context,
-                    secretKey: 'sk_test_5hee6d6d5dd5dd5dd5d5',
+                    secretKey: 'sk_test_4daeaa768f986a546516cd9a5d101f657ea4f1d3',
                     amount: 60000,
-                    email: 'adam@gmail.com',
+                    email: 'theelitedevelopers1@gmail.com',
                     callbackUrl: 'https://callback.com',
+                    showProgressBar: false,
                     paymentOptions: [PaymentOption.card, PaymentOption.bankTransfer, PaymentOption.mobileMoney],
                     currency: Currency.NGN,
                     metaData: {

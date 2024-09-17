@@ -1,3 +1,6 @@
+
+
+
 /// This class represents a payment request object used for interacting with the Paystack payment gateway.
 /// It contains the necessary information to initiate a payment transaction.
 class PaystackRequest {
