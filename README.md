@@ -1,4 +1,4 @@
-## :money_bag: Paystack Package for Flutter
+## :moneybag: Paystack Package for Flutter
 
 ## Screenshots
 
