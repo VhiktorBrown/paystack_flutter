@@ -133,13 +133,13 @@ Note that some of the parameters are optional. Below is a table giving exact det
 | reference          | String                     | Optional          | A custom reference for the transaction. If you do not pass a reference, Paystack will generate one automatically for you.                                                                                                                                                                                    |
 | confirmTransaction | bool                       | Optional          | If set to true, the package checks with paystack using the reference to confirm if the transaction was truly successful. In most cases, you'll have to do this through the backend, but the package gives you the option to do it in your app. Default value is `FALSE`                                      |
 | metadata           | dynamic(json)              | Optional          | Additional metadata to be associated with the transaction. This is usually the goods/services your customer is trying to make payment for. It's expected in json format. It makes it easy to provide value to your customer by just using the reference to get the data after confirming successful payment. |
-| paymentOptions     | List<PaymentOption(enum)>  | Optional          | A list of payment options allowed for the transaction. Please, `leave empty` or don't include if you want to use the payment options set from your dashboard. To use: [PaymentOption.card, PaymentOption.bankTransfer, PaymentOption.bank, PaymentOption.ussd]                                               |
-| currency           | enum                       | Optional          | The currency used for the transaction. If omitted, it uses the default Currency of the country associated with your Paystack account. Example: Currency.NGN. There are 5 currency enum options: NGN(Naira), USD(Dollars), GHS(Ghanian Cedi), ZAR(South African Rand), KES(Kenyan Shilling)                   |
+| paymentOptions     | List<PaymentOption(enum)>  | Optional          | A list of payment options allowed for the transaction. Please, `leave empty` or don't include if you want to use the payment options set from your dashboard. To use: [`PaymentOption.card`, `PaymentOption.bankTransfer`, `PaymentOption.bank`, `PaymentOption.ussd`]                                       |
+| currency           | enum                       | Optional          | The currency used for the transaction. If omitted, it uses the default Currency of the country associated with your Paystack account. Example: Currency.NGN. There are 5 currency enum options: `NGN(Naira)`, `USD(Dollars)`, `GHS(Ghanian Cedi)`, `ZAR(South African Rand)`, `KES(Kenyan Shilling)`         |
 | showProgressBar    | bool                       | Optional          | If true, it shows progress bar to inform user an action is in progress when getting checkout link from Paystack. Default value is `TRUE`                                                                                                                                                                     |
 
 
 # :grey_exclamation: Enums and their values
-#### paymentOptions:
+## paymentOptions:
 The `paymentOptions` parameter takes a List of PaymentOption enums like this:
 ``` dart
 paymentOptions: [PaymentOption.card, PaymentOption.bankTransfer, PaymentOption.bank, PaymentOption.ussd]
@@ -159,8 +159,9 @@ Here's a detailed comment that describes what each of these enums represent.
 ```
 
 **NOTE:** Don't forget that the paymentOptions is optional and that if you don't include it, Paystack will use the default payment options already set on your Paystack dashboard.
+So, leave it empty if that is what you want.
 
-#### currency:
+## currency:
 The `currency` parameter takes a Currency enum like this:
 ``` dart
 currency: Currency.NGN
