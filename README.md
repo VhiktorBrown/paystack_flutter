@@ -4,7 +4,7 @@
 
 |                       Initiate Payment                        |                            Payment Options                            |
 |:-------------------------------------------------------------:|:---------------------------------------------------------------------:|
-| <img src="screenshots/example.png" height="400" width="200"/> | <img src="screenshots/payment_options.jpg" height="400" width="200"/> |
+| <img src="screenshots/example.png" height="400" width="200"/> | <img src="screenshots/payment_options.png" height="400" width="200"/> |
 
 |                            Pay With Card                            |                            Pay With Bank Transfer                            |
 |:-------------------------------------------------------------------:|:----------------------------------------------------------------------------:|
