@@ -1,5 +1,8 @@
 export 'package:paystack_flutter/src/core/utils/functions.dart';
 
+// Created by Victor on 09/09/2024.
+// Copyright (c) 2024 Elite Developers.All rights reserved.
+
 enum PaymentOption {
   card,
   bank,

@@ -5,6 +5,9 @@ import 'package:paystack_flutter/src/core/utils/functions.dart';
 import 'package:paystack_flutter/src/models/paystack_callback.dart';
 import 'package:paystack_flutter/src/paystack_webview.dart';
 
+// Created by Victor on 09/09/2024.
+// Copyright (c) 2024 Elite Developers.All rights reserved.
+
 /// The PaystackFlutter class provides a convenient way to integrate Paystack payments into your Flutter applications.
 /// It handles the initialization of the payment process, navigation to the Paystack webview, and callback handling.
 class PaystackFlutter {
@@ -18,10 +21,10 @@ class PaystackFlutter {
   /// - [callbackUrl] The URL to which Paystack will redirect the user after the transaction.
   /// - [onSuccess] A callback function to be called when the payment is successful.
   /// - [onCancelled] A callback function to be called when the payment is canceled.
-  /// - [showProgressBar] If true, it shows progress bar to inform user an action is in progress when getting checkout link from Paystack.
   ///
   /// **Optional parameters:**
   ///
+  /// - [showProgressBar] If true, it shows progress bar to inform user an action is in progress when getting checkout link from Paystack.
   /// - [reference] A custom reference for the transaction.
   /// - [paymentOptions] A list of payment options allowed for the transaction.
   ///     - **Available Payment Options:**
@@ -33,7 +36,7 @@ class PaystackFlutter {
   ///       - [PaymentOption.eft] Allows payment via EFT (Electronic Funds Transfer).
   ///       - [PaymentOption.qr] Allows payment via QR codes.
   ///
-  /// - [currency] The currency used for the transaction. If omitted, it uses the Currency of the country associated with your Paystack account.
+  /// - [currency] The currency used for the transaction. If omitted, it uses the default Currency of the country associated with your Paystack account.
   ///     - **Supported Currencies:**
   ///       - [Currency.NGN] (Nigerian Naira)
   ///       - [Currency.USD] (US Dollar)

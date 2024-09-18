@@ -8,6 +8,9 @@ import 'package:paystack_flutter/src/models/paystack_response.dart';
 import 'package:paystack_flutter/src/models/paystack_verification.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+// Created by Victor on 09/09/2024.
+// Copyright (c) 2024 Elite Developers.All rights reserved.
+
 class PaystackWebview extends StatefulWidget {
   const PaystackWebview({
     super.key,
@@ -181,6 +184,11 @@ class _PaystackWebviewState extends State<PaystackWebview> {
                         }
                         // Close the webview after handling callback
                         return NavigationDecision.navigate;
+                      }
+
+                      //check if user is redirected to https://standard.paystack.co/close
+                      if(uri.toString().startsWith('https://standard.paystack.co/close')){
+                        await verifyTransaction();
                       }
                     return NavigationDecision.navigate;
                   },

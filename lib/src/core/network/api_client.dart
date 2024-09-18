@@ -3,6 +3,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import '../utils/exceptions.dart';
 
+// Created by Victor on 09/09/2024.
+// Copyright (c) 2024 Elite Developers.All rights reserved.
+
 class ApiClient {
   ApiClient() {
     final options = BaseOptions(

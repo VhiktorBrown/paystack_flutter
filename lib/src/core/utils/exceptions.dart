@@ -4,6 +4,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:paystack_flutter/src/core/utils/strings.dart';
 
+// Created by Victor on 09/09/2024.
+// Copyright (c) 2024 Elite Developers.All rights reserved.
+
 /// custom exception class for handling exceptions in the api_client
 class ApiException implements Exception {
   ApiException(this.message);
