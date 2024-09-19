@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     email: 'theelitedevelopers1@gmail.com', // The customer's email address.
                     callbackUrl: 'https://callback.com', // The URL to which Paystack will redirect the user after the transaction.
                     showProgressBar: true, // If true, it shows progress bar to inform user an action is in progress when getting checkout link from Paystack.
-                    //paymentOptions: [PaymentOption.card, PaymentOption.bankTransfer, PaymentOption.mobileMoney],
+                    paymentOptions: [PaymentOption.card, PaymentOption.bankTransfer, PaymentOption.mobileMoney],
                     currency: Currency.NGN,
                     metaData: {
                       "product_name": "Nike Sneakers",

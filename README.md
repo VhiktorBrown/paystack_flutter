@@ -200,7 +200,7 @@ confirmTransaction: true
 ```
 When included, the package makes sure to confirm directly from Paystack if that transaction was truly successful. If it was, it will execute the onSuccess callback, and if it wasn't successful, it'll call the onCancelled callback.
 
-## :negative_squared_cross_mark: Cancelled/Unsuccessful Callback(After an Unsuccessful payment)
+## :x: Cancelled/Unsuccessful Callback(After an Unsuccessful payment)
 The onCancelled callback is executed when if the payment was unsuccessful. You can go ahead to either display a message to the customer or take the reference and do something with it like confirming if it was truly unsuccessful.
 Remember that you can always get access to the `reference` and `accessCode` from the callback:
 ``` dart
@@ -218,5 +218,5 @@ An [example project](https://github.com/VhiktorBrown/paystack_flutter/tree/ios-f
 Clone this repo and navigate to the **example** folder. Open it with a supported IDE or execute `flutter run` from that folder in terminal.
 
 ## :pencil: Contributing, :disappointed: Issues and :bug: Bug Reports
-Your contributions are invaluable in making this library even better. If you're interested in contributing, please feel free to submit a pull request or open an issue on our [repository link](https://github.com/VhiktorBrown/paystack_flutter)."
+Your contributions are invaluable in making this library even better. If you're interested in contributing, please feel free to submit a pull request or open an issue on our [repository link](https://github.com/VhiktorBrown/paystack_flutter).
 Did you experience an issue or you want to report a bug? Please, [report it here](https://github.com/VhiktorBrown/paystack_flutter/issues). Please, be as descriptive as possible.
