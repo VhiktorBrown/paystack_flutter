@@ -1,5 +1,8 @@
 ## :moneybag: Paystack Package for Flutter
 
+# Paystack Flutter Flow
+![](https://github.com/VhiktorBrown/paystack_flutter/blob/ios-fix/gif/paystack_flutter_flow.gif)
+
 ## Screenshots
 
 |                       Initiate Payment                        |                            Payment Options                            |
