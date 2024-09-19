@@ -1,3 +1,6 @@
+// Created by Victor on 09/09/2024.
+// Copyright (c) 2024 Elite Developers.All rights reserved.
+
 class PayStackResponse {
   bool status;
   String message;

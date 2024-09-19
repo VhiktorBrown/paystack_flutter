@@ -4,6 +4,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:paystack_flutter/src/core/utils/strings.dart';
 
+// Created by Victor on 09/09/2024.
+// Copyright (c) 2024 Elite Developers.All rights reserved.
+
 /// custom exception class for handling exceptions in the api_client
 class ApiException implements Exception {
   ApiException(this.message);
@@ -82,7 +85,16 @@ class ApiException implements Exception {
         }
       case DioExceptionType.badCertificate:
       case DioExceptionType.badResponse:
-        return OtherExceptions(kBadRequestError);
+        if(err.response?.data != null){
+          if ((err.response!.data as Map)['message'] is Map) {
+            return OtherExceptions(
+              ((err.response!.data as Map)['message'] as Map)['message'],
+            );
+          }
+          return OtherExceptions((err.response!.data as Map)['message']);
+        }else {
+          return OtherExceptions(kBadRequestError);
+        }
       case DioExceptionType.connectionError:
         return InternetConnectException(kInternetConnectionError);
     }

@@ -1,3 +1,4 @@
-## 0.0.1
+## 1.0.0
 
-* TODO: Describe initial release.
+* First release.
+* Paystack's payment gateway providing various payment options to collect payment in your flutter app.
