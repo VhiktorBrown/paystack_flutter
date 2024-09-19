@@ -192,6 +192,8 @@ onSuccess: (paystackCallback){
       ));
 }
 ```
+
+## :heavy_check_mark: Verifying Transaction with the Package
 It's also possible to use the package to confirm if a transaction was successful by just including the `confirmTransaction` parameter like this:
 ``` dart
 confirmTransaction: true
@@ -210,3 +212,11 @@ onCancelled: (paystackCallback){
       ));
 }
 ```
+
+## :arrow_forward: Running the Example project
+An [example project](https://github.com/VhiktorBrown/paystack_flutter/tree/ios-fix/example) has been provided for you in this package.
+Clone this repo and navigate to the **example** folder. Open it with a supported IDE or execute `flutter run` from that folder in terminal.
+
+## :pencil: Contributing, :disappointed: Issues and :bug: Bug Reports
+Your contributions are invaluable in making this library even better. If you're interested in contributing, please feel free to submit a pull request or open an issue on our [repository link](https://github.com/VhiktorBrown/paystack_flutter)."
+Did you experience an issue or you want to report a bug? Please, [report it here](https://github.com/VhiktorBrown/paystack_flutter/issues). Please, be as descriptive as possible.
