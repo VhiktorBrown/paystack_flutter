@@ -42,12 +42,12 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: (){
                 PaystackFlutter().pay(
                     context: context,
-                    secretKey: 'PAYSTACK_SECRET_KEY', // Your Paystack secret key.
+                    secretKey: 'sk_test_4daeaa768f986a546516cd9a5d101f657ea4f1d3', // Your Paystack secret key.
                     amount: 60000, // The amount to be charged in the smallest currency unit. If amount is 600, multiply by 100(600*100)
                     email: 'theelitedevelopers1@gmail.com', // The customer's email address.
                     callbackUrl: 'https://callback.com', // The URL to which Paystack will redirect the user after the transaction.
                     showProgressBar: true, // If true, it shows progress bar to inform user an action is in progress when getting checkout link from Paystack.
-                    paymentOptions: [PaymentOption.card, PaymentOption.bankTransfer, PaymentOption.mobileMoney],
+                    //paymentOptions: [PaymentOption.card, PaymentOption.bankTransfer, PaymentOption.mobileMoney],
                     currency: Currency.NGN,
                     metaData: {
                       "product_name": "Nike Sneakers",
