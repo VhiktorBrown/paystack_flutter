@@ -1,6 +1,7 @@
 ## :moneybag: Paystack Package for Flutter
 
-# Paystack Flutter Flow
+<img src="/gif/paystack_flutter_flow.gif" width="250" height="400" alt=""/>
+
 ![](https://github.com/VhiktorBrown/paystack_flutter/blob/ios-fix/gif/paystack_flutter_flow.gif)
 
 ## Screenshots
