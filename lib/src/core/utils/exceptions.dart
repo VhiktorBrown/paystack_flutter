@@ -30,7 +30,7 @@ class ApiException implements Exception {
 
       // others - handle other types of custom exceptions here
       case DioExceptionType.unknown:
-            // format exception
+        // format exception
         if (err.error is FormatException) {
           return FormatException();
         }
@@ -85,14 +85,14 @@ class ApiException implements Exception {
         }
       case DioExceptionType.badCertificate:
       case DioExceptionType.badResponse:
-        if(err.response?.data != null){
+        if (err.response?.data != null) {
           if ((err.response!.data as Map)['message'] is Map) {
             return OtherExceptions(
               ((err.response!.data as Map)['message'] as Map)['message'],
             );
           }
           return OtherExceptions((err.response!.data as Map)['message']);
-        }else {
+        } else {
           return OtherExceptions(kBadRequestError);
         }
       case DioExceptionType.connectionError:

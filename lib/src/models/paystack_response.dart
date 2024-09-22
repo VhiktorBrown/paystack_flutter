@@ -13,15 +13,15 @@ class PayStackResponse {
     required this.authorizationUrl,
     required this.reference,
     required this.accessCode,
-});
+  });
 
-  factory PayStackResponse.fromJson(Map<String, dynamic> json){
+  factory PayStackResponse.fromJson(Map<String, dynamic> json) {
     return PayStackResponse(
-        status: json['status'],
-        message: json['message'],
-        authorizationUrl: json['data']['authorization_url'],
-        reference: json['data']['reference'],
-        accessCode: json['data']['access_code'],
+      status: json['status'],
+      message: json['message'],
+      authorizationUrl: json['data']['authorization_url'],
+      reference: json['data']['reference'],
+      accessCode: json['data']['access_code'],
     );
   }
 }

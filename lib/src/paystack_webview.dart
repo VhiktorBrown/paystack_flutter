@@ -58,14 +58,13 @@ class _PaystackWebviewState extends State<PaystackWebview> {
   Future<PayStackResponse> getAuthorizationUrl() async {
     try {
       PaystackRequest request = PaystackRequest(
-        amount: widget.amount,
-        email: widget.email,
-        callback: widget.callbackUrl,
-        reference: widget.reference,
-        metaData: widget.metaData,
-        channels: convertPaymentOptionEnumToString(widget.paymentOptions),
-        currency: widget.currency?.toCurrencyString()
-      );
+          amount: widget.amount,
+          email: widget.email,
+          callback: widget.callbackUrl,
+          reference: widget.reference,
+          metaData: widget.metaData,
+          channels: convertPaymentOptionEnumToString(widget.paymentOptions),
+          currency: widget.currency?.toCurrencyString());
       final response = await ApiClient().post(
           paystackEndpoints.initializeTransaction,
           data: request.toJson(),
@@ -91,28 +90,27 @@ class _PaystackWebviewState extends State<PaystackWebview> {
           paystackEndpoints.verifyTransaction(payStackResponse.reference),
           extraHeaders: {'Authorization': 'Bearer ${widget.secretKey}'});
       // converts api response into the PaystackResponse class for easy use.
-      final verificationData = PaystackVerification
-          .fromJson(response.data);
-      if(verificationData.status){
+      final verificationData = PaystackVerification.fromJson(response.data);
+      if (verificationData.status) {
         //it means we got the correct data that we are expecting.
-        if(verificationData.gatewayResponse == "Successful" ||
-        verificationData.gatewayResponse == "Approved"){
+        if (verificationData.gatewayResponse == "Successful" ||
+            verificationData.gatewayResponse == "Approved") {
           //If Successful, it means that the transaction itself was successful.
-          if(mounted){
+          if (mounted) {
             Navigator.pop(context);
             widget.onSuccess(callback);
           }
-        }else {
-          if(mounted){
+        } else {
+          if (mounted) {
             Navigator.pop(context);
           }
           //If not successful, we call the onCancelled.
           widget.onCancelled(callback);
         }
-      }else {
+      } else {
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Error Occurred: ${verificationData.message}')));
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text('Error Occurred: ${verificationData.message}')));
         }
       }
     } on Exception catch (err) {
@@ -132,34 +130,38 @@ class _PaystackWebviewState extends State<PaystackWebview> {
           future: getAuthorizationUrl(),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
-              return Center(child: Column(
+              return Center(
+                  child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Error: ${snapshot.error}'),
-                  const SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   TextButton(
-                      onPressed: () async {
-                        // Call getAuthorizationUrl again on button press
-                        final response = await getAuthorizationUrl();
-                        // Update snapshot data with the new response
-                        setState(() {
-                          payStackResponse = response;
-                        });
-                      },
-                      child: const Text('Initialize payment again',
+                    onPressed: () async {
+                      // Call getAuthorizationUrl again on button press
+                      final response = await getAuthorizationUrl();
+                      // Update snapshot data with the new response
+                      setState(() {
+                        payStackResponse = response;
+                      });
+                    },
+                    child: const Text(
+                      'Initialize payment again',
                       style: TextStyle(
                         color: Colors.blue,
-                      ),),
+                      ),
+                    ),
                   ),
                 ],
               ));
             }
 
             if (!snapshot.hasData) {
-              if(widget.showProgressBar != null && widget.showProgressBar!){
-                return const Center(
-                    child: CircularProgressIndicator());
-              }else {
+              if (widget.showProgressBar != null && widget.showProgressBar!) {
+                return const Center(child: CircularProgressIndicator());
+              } else {
                 return const SizedBox.shrink();
               }
             }
@@ -170,28 +172,31 @@ class _PaystackWebviewState extends State<PaystackWebview> {
               ..setNavigationDelegate(
                 NavigationDelegate(
                   onNavigationRequest: (request) async {
-                      String? uri = request.url;
-                      if (uri.toString().startsWith(widget.callbackUrl)) {
-                        // Handle callback URL
-                        ///If confirmTransaction is not empty and its true, we confirm
-                        ///if the transaction was successful from Paystack
-                        if(widget.confirmTransaction != null && widget.confirmTransaction!){
-                          await verifyTransaction().then((value) {
-                            //Navigator.pop(context);
-                          });
-                        }else {
-                          Navigator.pop(context);
-                          //this means the developer doesn't want to confirm from Paystack.
-                          widget.onSuccess(callback);
-                        }
-                        // Close the webview after handling callback
-                        return NavigationDecision.navigate;
+                    String? uri = request.url;
+                    if (uri.toString().startsWith(widget.callbackUrl)) {
+                      // Handle callback URL
+                      ///If confirmTransaction is not empty and its true, we confirm
+                      ///if the transaction was successful from Paystack
+                      if (widget.confirmTransaction != null &&
+                          widget.confirmTransaction!) {
+                        await verifyTransaction().then((value) {
+                          //Navigator.pop(context);
+                        });
+                      } else {
+                        Navigator.pop(context);
+                        //this means the developer doesn't want to confirm from Paystack.
+                        widget.onSuccess(callback);
                       }
+                      // Close the webview after handling callback
+                      return NavigationDecision.navigate;
+                    }
 
-                      //check if user is redirected to https://standard.paystack.co/close
-                      if(uri.toString().startsWith('https://standard.paystack.co/close')){
-                        await verifyTransaction();
-                      }
+                    //check if user is redirected to https://standard.paystack.co/close
+                    if (uri
+                        .toString()
+                        .startsWith('https://standard.paystack.co/close')) {
+                      await verifyTransaction();
+                    }
                     return NavigationDecision.navigate;
                   },
                 ),

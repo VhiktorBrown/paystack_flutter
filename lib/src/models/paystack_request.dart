@@ -1,7 +1,6 @@
 // Created by Victor on 09/09/2024.
 // Copyright (c) 2024 Elite Developers.All rights reserved.
 
-
 /// This class represents a payment request object used for interacting with the Paystack payment gateway.
 /// It contains the necessary information to initiate a payment transaction.
 class PaystackRequest {
@@ -103,10 +102,10 @@ class PaystackRequest {
     if (metaData != null) {
       baseJson["metadata"] = metaData;
     }
-    if(channels != null && channels!.isNotEmpty){
+    if (channels != null && channels!.isNotEmpty) {
       baseJson["channels"] = channels!;
     }
-    if(currency != null){
+    if (currency != null) {
       baseJson["currency"] = currency!;
     }
 

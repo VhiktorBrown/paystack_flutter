@@ -42,10 +42,10 @@ class ApiClient {
   static String baseUrl = 'https://api.paystack.co';
 
   Future<Response> get(
-      String uri, {
-        Map<String, dynamic>? queryParameters,
-        Map<String, dynamic>? extraHeaders,
-      }) async {
+    String uri, {
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? extraHeaders,
+  }) async {
     try {
       final dio = _dio!;
 
@@ -63,11 +63,11 @@ class ApiClient {
   }
 
   Future<Response> post(
-      String uri, {
-        Map<String, dynamic>? data,
-        Map<String, dynamic>? queryParameters,
-        Map<String, dynamic>? extraHeaders,
-      }) async {
+    String uri, {
+    Map<String, dynamic>? data,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? extraHeaders,
+  }) async {
     try {
       //setAuthCookieAndToken();
       final dio = _dio!;

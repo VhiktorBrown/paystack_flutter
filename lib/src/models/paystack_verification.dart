@@ -11,9 +11,9 @@ class PaystackVerification {
     required this.message,
     required this.gatewayStatus,
     required this.gatewayResponse,
-});
+  });
 
-  factory PaystackVerification.fromJson(Map<String, dynamic> json){
+  factory PaystackVerification.fromJson(Map<String, dynamic> json) {
     return PaystackVerification(
         status: json['status'],
         message: json['message'],
