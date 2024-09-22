@@ -25,7 +25,7 @@ paystack_for_flutter: 1.0.0
 
 ## Then, import like this:
 ``` dart
-import 'package:paystack_for_flutter/paystack_flutter.dart';
+import 'package:paystack_for_flutter/paystack_for_flutter.dart';
 ```
 
 ## :rocket: How to Use
@@ -33,7 +33,7 @@ To use the Paystack package, all you need to do is call the package when a butto
 ``` dart
 PaystackFlutter().pay(
     context: context,
-    secretKey: 'YOUR_PAYSTACK_SECRET_KEY', // Your Paystack secret key.
+    secretKey: 'YOUR_PAYSTACK_SECRET_KEY', // Your Paystack secret key gotten from your Paystack dashboard.
     amount: 60000, // The amount to be charged in the smallest currency unit. If amount is 600, multiply by 100(600*100)
     email: 'theelitedevelopers1@gmail.com', // The customer's email address.
     callbackUrl: 'https://callback.com', // The URL to which Paystack will redirect the user after the transaction.

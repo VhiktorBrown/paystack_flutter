@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:paystack_for_flutter/paystack_flutter.dart';
+import 'package:paystack_for_flutter/paystack_for_flutter.dart';
 
 void main() {
   runApp(const MyApp());
