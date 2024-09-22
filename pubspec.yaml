@@ -1,5 +1,5 @@
 name: paystack_flutter
-description: "Are you looking to integrate Paystack into your flutter app? The Flutter package helps you collect payment in your app with just few lines of code. Makes available payment options like Pay with Bank Transfer, Pay with Bank, Pay with USSD, Pay with Opay, Mobile Money etc."
+description: "Are you looking to integrate Paystack into your flutter app? The paystack_flutter package helps you collect payment in your app with just few lines of code. Makes available payment options like Pay with Bank Transfer, Pay with Bank, Pay with USSD, Pay with Opay, Mobile Money etc."
 version: 1.0.0
 homepage: https://github.com/VhiktorBrown/paystack_flutter
 documentation: https://github.com/VhiktorBrown/paystack_flutter
@@ -60,3 +60,10 @@ flutter:
 platforms:
   android:
   ios:
+  macos:
+
+topics:
+  - paystack
+  - payment
+  - payment-gateway
+  - flutter

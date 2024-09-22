@@ -135,7 +135,7 @@ Note that some of the parameters are optional. Below is a table giving exact det
 | reference          | String                     | No       | A custom reference for the transaction. If you do not pass a reference, Paystack will generate one automatically for you.                                                                                                                                                                                                           |
 | confirmTransaction | bool                       | No       | If set to true, the package checks with paystack using the reference to confirm if the transaction was truly successful. In most cases, you'll have to do this through the backend, but the package gives you the option to do it in your app. Default value is `FALSE`                                                             |
 | metadata           | dynamic(json)              | No       | Additional metadata to be associated with the transaction. This is usually the goods/services your customer is trying to make payment for. It's expected in json format. It makes it easy to provide value to your customer by just using the reference to get the data after confirming successful payment.                        |
-| paymentOptions     | List<PaymentOption>        | No       | A list of payment options allowed for the transaction. Please, `leave empty` or don't include if you want to use the payment options set from your dashboard. To use: [`PaymentOption.card`, `PaymentOption.bankTransfer`, `PaymentOption.bank`, `PaymentOption.ussd`]                                                              |
+| paymentOptions     | List<PaymentOption(enum)>  | No       | A list of payment options allowed for the transaction. Please, `leave empty` or don't include if you want to use the payment options set from your dashboard. To use: [`PaymentOption.card`, `PaymentOption.bankTransfer`, `PaymentOption.bank`, `PaymentOption.ussd`]                                                              |
 | currency           | enum                       | No       | The currency used for the transaction. If omitted, it uses the default Currency of the country associated with your Paystack account. Example: Currency.NGN. There are 5 currency enum options: `NGN(Naira)`, `USD(Dollars)`, `GHS(Ghanian Cedi)`, `ZAR(South African Rand)`, `KES(Kenyan Shilling)`                                |
 | showProgressBar    | bool                       | No       | If true, it shows progress bar to inform user an action is in progress when getting checkout link from Paystack. Default value is `TRUE`                                                                                                                                                                                            |
 
@@ -179,6 +179,8 @@ Here's the list of currency that Paystack supports:
   ///       - [Currency.ZAR] (South African Rand)
   ///       - [Currency.KES] (Kenyan Shilling)
 ```
+## Bank Transfer Unresponsive in Sandbox ENV(But Don't Fret)
+Please, don't fret if the `Pay with Bank Transfer` option just keeps loading indefinitely after you click on the `I have sent the money` button. Paystack Bank Transfer option doesn't work properly in the sandbox environment but when you use your `LIVE KEY`, it works fine.
 
 ## :white_check_mark: Success Callback(After successful payment)
 Paystack recommends that you use the reference to make a call to your backend to confirm if transaction was indeed successful before you provide value to your customer.
