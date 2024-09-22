@@ -20,7 +20,7 @@ The Flutter package that makes it super easy to integrate Paystack's payment gat
 ## :dart: Add dependency to pubspec.yaml:
 ``` dart
 dependencies:
-paystack_for_flutter: 1.0.0
+paystack_for_flutter: 1.0.1
 ```
 
 ## Then, import like this:
@@ -220,7 +220,7 @@ onCancelled: (paystackCallback){
 ```
 
 ## :arrow_forward: Running the Example project
-An [example project](https://github.com/VhiktorBrown/paystack_flutter/tree/ios-fix/example) has been provided for you in this package.
+An [example project](https://github.com/VhiktorBrown/paystack_flutter/tree/master/example) has been provided for you in this package.
 Clone this repo and navigate to the **example** folder. Open it with a supported IDE or execute `flutter run` from that folder in terminal.
 
 ## :pencil: Contributing, :disappointed: Issues and :bug: Bug Reports
