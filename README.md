@@ -1,5 +1,5 @@
 ## :moneybag: Paystack Package for Flutter
-The Flutter package that makes it super easy to integrate Paystack's payment gateway into your app with just few lines of code. Fully supports Android & iOS.
+The Flutter package that makes it super easy to integrate Paystack's payment gateway into your app with just few lines of code.
 
 <img src="/gif/paystack_flutter_flow.gif" width="300" height="550" alt=""/>
 
