@@ -1,4 +1,5 @@
 ## :moneybag: Paystack Package for Flutter
+The Flutter package that makes it super easy to integrate Paystack's payment gateway into your app with just few lines of code.
 
 <img src="/gif/paystack_flutter_flow.gif" width="300" height="550" alt=""/>
 
@@ -15,8 +16,6 @@
 |                            Pay With Bank                            |                          Payment Successful                           |
 |:-------------------------------------------------------------------:|:---------------------------------------------------------------------:|
 | <img src="screenshots/pay_with_bank.png" height="400" width="200"/> | <img src="screenshots/payment_success.png" height="400" width="200"/> |
-
-A Flutter package that makes it super easy to integrate Paystack in your app with just few lines of code. Supports Android & iOS. Support for other platforms underway.
 
 ## :dart: Add dependency to pubspec.yaml:
 ``` dart
