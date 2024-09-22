@@ -179,7 +179,7 @@ Here's the list of currency that Paystack supports:
   ///       - [Currency.ZAR] (South African Rand)
   ///       - [Currency.KES] (Kenyan Shilling)
 ```
-## Bank Transfer Unresponsive in Sandbox ENV(But Don't Fret)
+## :grey_exclamation: Bank Transfer Unresponsive in Sandbox ENV(But Don't Fret)
 Please, don't fret if the `Pay with Bank Transfer` option just keeps loading indefinitely after you click on the `I have sent the money` button. Paystack Bank Transfer option doesn't work properly in the sandbox environment but when you use your `LIVE KEY`, it works fine.
 
 ## :white_check_mark: Success Callback(After successful payment)
