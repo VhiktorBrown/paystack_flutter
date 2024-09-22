@@ -9,6 +9,7 @@ import 'package:paystack_flutter/src/models/paystack_verification.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 // Created by Victor on 09/09/2024.
+// Modified by Victor on 09/22/24.
 // Copyright (c) 2024 Elite Developers.All rights reserved.
 
 class PaystackWebview extends StatefulWidget {
@@ -162,6 +163,8 @@ class _PaystackWebviewState extends State<PaystackWebview> {
                 return const SizedBox.shrink();
               }
             }
+            final authorizationUrl = snapshot.data!.authorizationUrl;
+
             final controller = WebViewController()
               ..setJavaScriptMode(JavaScriptMode.unrestricted)
               ..setUserAgent("Flutter;Webview")
