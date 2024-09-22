@@ -163,7 +163,6 @@ class _PaystackWebviewState extends State<PaystackWebview> {
                 return const SizedBox.shrink();
               }
             }
-            final authorizationUrl = snapshot.data!.authorizationUrl;
 
             final controller = WebViewController()
               ..setJavaScriptMode(JavaScriptMode.unrestricted)
