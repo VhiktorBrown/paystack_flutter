@@ -1,5 +1,5 @@
 name: paystack_for_flutter
-description: The paystack_flutter package helps you collect payment in your app with just few lines of code. Offers may payment options.
+description: The paystack_flutter package helps you collect payment in your app with just few lines of code. Offers many payment options.
 version: 1.0.1
 homepage: https://github.com/VhiktorBrown/paystack_flutter
 documentation: https://github.com/VhiktorBrown/paystack_flutter/blob/master/README.md
