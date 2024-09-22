@@ -5,17 +5,17 @@ The Flutter package that makes it super easy to integrate Paystack's payment gat
 
 ## Screenshots
 
-|                       Initiate Payment                        |                            Payment Options                            |
-|:-------------------------------------------------------------:|:---------------------------------------------------------------------:|
-| <img src="screenshots/example.png" height="400" width="200"/> | <img src="screenshots/payment_options.png" height="400" width="200"/> |
+|                                                           Initiate Payment                                                           |                                                               Payment Options                                                                |
+|:------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://raw.githubusercontent.com/VhiktorBrown/paystack_flutter/master/screenshots/example.png" height="400" width="200"/> | <img src="https://raw.githubusercontent.com/VhiktorBrown/paystack_flutter/master/screenshots/payment_options.png" height="400" width="200"/> |
 
-|                            Pay With Card                            |                            Pay With Bank Transfer                            |
-|:-------------------------------------------------------------------:|:----------------------------------------------------------------------------:|
-| <img src="screenshots/pay_with_card.png" height="400" width="200"/> | <img src="screenshots/pay_with_bank_transfer.png" height="400" width="200"/> |
+|                                                               Pay With Card                                                                |                                                               Pay With Bank Transfer                                                                |
+|:------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://raw.githubusercontent.com/VhiktorBrown/paystack_flutter/master/screenshots/pay_with_card.png" height="400" width="200"/> | <img src="https://raw.githubusercontent.com/VhiktorBrown/paystack_flutter/master/screenshots/pay_with_bank_transfer.png" height="400" width="200"/> |
 
-|                            Pay With Bank                            |                          Payment Successful                           |
-|:-------------------------------------------------------------------:|:---------------------------------------------------------------------:|
-| <img src="screenshots/pay_with_bank.png" height="400" width="200"/> | <img src="screenshots/payment_success.png" height="400" width="200"/> |
+|                                                               Pay With Bank                                                                |                                                              Payment Successful                                                              |
+|:------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://raw.githubusercontent.com/VhiktorBrown/paystack_flutter/master/screenshots/pay_with_bank.png" height="400" width="200"/> | <img src="https://raw.githubusercontent.com/VhiktorBrown/paystack_flutter/master/screenshots/payment_success.png" height="400" width="200"/> |
 
 ## :dart: Add dependency to pubspec.yaml:
 ``` dart
