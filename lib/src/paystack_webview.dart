@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:paystack_flutter/src/core/network/api_client.dart';
-import 'package:paystack_flutter/src/core/network/api_endpoints.dart';
-import 'package:paystack_flutter/src/core/utils/functions.dart';
-import 'package:paystack_flutter/src/models/paystack_callback.dart';
-import 'package:paystack_flutter/src/models/paystack_request.dart';
-import 'package:paystack_flutter/src/models/paystack_response.dart';
-import 'package:paystack_flutter/src/models/paystack_verification.dart';
+import 'package:paystack_for_flutter/src/core/network/api_client.dart';
+import 'package:paystack_for_flutter/src/core/network/api_endpoints.dart';
+import 'package:paystack_for_flutter/src/core/utils/functions.dart';
+import 'package:paystack_for_flutter/src/models/paystack_callback.dart';
+import 'package:paystack_for_flutter/src/models/paystack_request.dart';
+import 'package:paystack_for_flutter/src/models/paystack_response.dart';
+import 'package:paystack_for_flutter/src/models/paystack_verification.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 // Created by Victor on 09/09/2024.

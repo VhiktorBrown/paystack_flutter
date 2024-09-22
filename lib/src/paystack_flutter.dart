@@ -1,9 +1,9 @@
 library paystack_flutter;
 
 import 'package:flutter/material.dart';
-import 'package:paystack_flutter/src/core/utils/functions.dart';
-import 'package:paystack_flutter/src/models/paystack_callback.dart';
-import 'package:paystack_flutter/src/paystack_webview.dart';
+import 'package:paystack_for_flutter/src/core/utils/functions.dart';
+import 'package:paystack_for_flutter/src/models/paystack_callback.dart';
+import 'package:paystack_for_flutter/src/paystack_webview.dart';
 
 // Created by Victor on 09/09/2024.
 // Copyright (c) 2024 Elite Developers.All rights reserved.

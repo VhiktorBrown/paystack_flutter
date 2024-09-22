@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:paystack_flutter/src/core/utils/strings.dart';
+import 'package:paystack_for_flutter/src/core/utils/strings.dart';
 
 // Created by Victor on 09/09/2024.
 // Copyright (c) 2024 Elite Developers.All rights reserved.

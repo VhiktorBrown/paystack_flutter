@@ -20,7 +20,12 @@ The Flutter package that makes it super easy to integrate Paystack's payment gat
 ## :dart: Add dependency to pubspec.yaml:
 ``` dart
 dependencies:
-paystack_flutter: 1.0.0
+paystack_for_flutter: 1.0.0
+```
+
+## Then, import like this:
+``` dart
+import 'package:paystack_for_flutter/paystack_flutter.dart';
 ```
 
 ## :rocket: How to Use
