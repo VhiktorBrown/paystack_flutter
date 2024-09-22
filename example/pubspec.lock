@@ -166,9 +166,10 @@ packages:
   paystack_for_flutter:
     dependency: "direct main"
     description:
-      path: ".."
-      relative: true
-    source: path
+      name: paystack_for_flutter
+      sha256: c232fd73995a8a6d842d696bf849f514078f36ab825b1e85577dc0a046cdf40f
+      url: "https://pub.dev"
+    source: hosted
     version: "1.0.1"
   plugin_platform_interface:
     dependency: transitive

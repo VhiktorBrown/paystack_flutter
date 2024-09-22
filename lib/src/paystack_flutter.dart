@@ -97,7 +97,7 @@ class PaystackFlutter {
           email: email,
           amount: amount,
           reference: reference,
-          showProgressBar: false,
+          showProgressBar: showProgressBar,
           confirmTransaction: confirmTransaction,
           paymentOptions: paymentOptions,
           currency: currency,
