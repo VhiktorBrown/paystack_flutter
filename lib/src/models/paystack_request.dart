@@ -101,7 +101,8 @@ class PaystackRequest {
   /// Converts the PaystackRequest object to a JSON map suitable for sending to the Paystack API.
   Map<String, dynamic> toJson() {
     // Call updateMetadata to ensure the "cancel_action" key-value pair is added
-    updateMetadata("cancel_action", "https://github.com/VhiktorBrown/paystack_flutter");
+    updateMetadata(
+        "cancel_action", "https://github.com/VhiktorBrown/paystack_flutter");
 
     final Map<String, dynamic> baseJson = {
       "amount": amount,
