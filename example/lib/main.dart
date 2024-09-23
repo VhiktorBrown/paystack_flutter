@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 PaystackFlutter().pay(
                   context: context,
                   secretKey:
-                      'YOUR PAYSTACK_SECRET_KEY', // Your Paystack secret key.
+                      'YOUR_PAYSTACK_SECRET_KEY', // Your Paystack secret key.
                   amount:
                       60000, // The amount to be charged in the smallest currency unit. If amount is 600, multiply by 100(600*100)
                   email:
