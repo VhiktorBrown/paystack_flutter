@@ -59,7 +59,7 @@ class PaystackRequest {
 
   /// Any additional metadata you want to associate with the transaction.
   /// This can be a map of key-value pairs (optional).
-  final dynamic metaData;
+  dynamic metaData;
 
   /// Creates a new PaystackRequest object.
   ///
@@ -87,8 +87,22 @@ class PaystackRequest {
     this.currency,
   });
 
+  /// Updates or adds the provided key-value pair to the `metadata`.
+  /// Ensures `metaData` is a Map before adding the data.
+  void updateMetadata(String key, String value) {
+    if (metaData == null) {
+      metaData = {}; // Initialize as an empty Map if not already set
+    } else if (metaData is! Map) {
+      throw ArgumentError('metaData must be a Map');
+    }
+    metaData[key] = value;
+  }
+
   /// Converts the PaystackRequest object to a JSON map suitable for sending to the Paystack API.
   Map<String, dynamic> toJson() {
+    // Call updateMetadata to ensure the "cancel_action" key-value pair is added
+    updateMetadata("cancel_action", "https://github.com/VhiktorBrown/paystack_flutter");
+
     final Map<String, dynamic> baseJson = {
       "amount": amount,
       "email": email,

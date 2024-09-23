@@ -17,6 +17,11 @@ The Flutter package that makes it super easy to integrate Paystack's payment gat
 |:------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------:|
 | <img src="https://raw.githubusercontent.com/VhiktorBrown/paystack_flutter/master/screenshots/pay_with_bank.png" height="400" width="200"/> | <img src="https://raw.githubusercontent.com/VhiktorBrown/paystack_flutter/master/screenshots/payment_success.png" height="400" width="200"/> |
 
+## Significant Changes:
+* Fixed `showProgressBar` argument not being used in implementation. Now, whatever value you set is used.
+* Clicking on `Cancel Payment` on Paystack payment page now cancels the payment and closes the page, calling the onCancelled callback.
+
+
 ## :dart: Add dependency to pubspec.yaml:
 ``` dart
 dependencies:

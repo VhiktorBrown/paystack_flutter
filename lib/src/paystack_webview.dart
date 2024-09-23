@@ -191,6 +191,13 @@ class _PaystackWebviewState extends State<PaystackWebview> {
                       return NavigationDecision.navigate;
                     }
 
+                    //check if Paystack redirects to cancel_url
+                    if(uri.toString() == "https://github.com/VhiktorBrown/paystack_flutter"){
+                      Navigator.pop(context);
+                      //this means the user cancelled payment.
+                      widget.onCancelled(callback);
+                    }
+
                     //check if user is redirected to https://standard.paystack.co/close
                     if (uri
                         .toString()
