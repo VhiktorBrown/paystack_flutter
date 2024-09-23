@@ -1,6 +1,6 @@
 name: paystack_for_flutter
 description: The Flutter package that makes it super easy to integrate Paystack's payment gateway into your app with just few lines of code.
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/VhiktorBrown/paystack_flutter
 documentation: https://github.com/VhiktorBrown/paystack_flutter/blob/master/README.md
 issue_tracker: https://github.com/VhiktorBrown/paystack_flutter/issues
