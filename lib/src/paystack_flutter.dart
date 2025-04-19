@@ -41,6 +41,7 @@ class PaystackFlutter {
   ///     - **Supported Currencies:**
   ///       - [Currency.NGN] (Nigerian Naira)
   ///       - [Currency.USD] (US Dollar)
+  ///       - [Currency.EUR] (Euro)
   ///       - [Currency.GHS] (Ghanaian Cedi)
   ///       - [Currency.ZAR] (South African Rand)
   ///       - [Currency.KES] (Kenyan Shilling)
