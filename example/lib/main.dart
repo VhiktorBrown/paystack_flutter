@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     PaymentOption.bankTransfer,
                     PaymentOption.mobileMoney
                   ],
-                  currency: Currency.EUR,
+                  currency: Currency.NGN,
                   metaData: {
                     "product_name": "Nike Sneakers",
                     "product_quantity": 3,
