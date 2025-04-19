@@ -1,5 +1,5 @@
 ## :moneybag: Paystack Package for Flutter
-The Flutter package that makes it super easy to integrate Paystack's payment gateway into your app with just few lines of code. Payment Options like Card, Bank Transfer, USSD, Mobile Money, etc.
+The Flutter package that makes it super easy to integrate Paystack's payment gateway into your app with just few lines of code. Payment Options like Card, Bank Transfer, Bank, USSD, Mobile Money, etc.
 
 <img src="https://raw.githubusercontent.com/VhiktorBrown/paystack_flutter/master/gif/paystack_flutter_flow.gif" width="300" height="550" alt=""/>
 
@@ -26,7 +26,7 @@ The Flutter package that makes it super easy to integrate Paystack's payment gat
 ## :dart: Add dependency to pubspec.yaml:
 ``` dart
 dependencies:
-paystack_for_flutter: 1.0.3
+paystack_for_flutter: ^1.0.4
 ```
 
 ## Then, import like this:
