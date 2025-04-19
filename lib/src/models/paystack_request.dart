@@ -127,21 +127,17 @@ class PaystackRequest {
 
     //check if the first name and last name are passed
     List<CustomField> customFields = [];
-    if(firstName != null){
-      customFields.add(
-        CustomField(
-            displayName: 'First Name',
-            variableName: 'first_name',
-            value: firstName!)
-      );
+    if (firstName != null) {
+      customFields.add(CustomField(
+          displayName: 'First Name',
+          variableName: 'first_name',
+          value: firstName!));
     }
-    if(lastName != null){
-      customFields.add(
-          CustomField(
-              displayName: 'Last Name',
-              variableName: 'last_name',
-              value: lastName!)
-      );
+    if (lastName != null) {
+      customFields.add(CustomField(
+          displayName: 'Last Name',
+          variableName: 'last_name',
+          value: lastName!));
     }
     metaData['custom_fields'] =
         customFields.map((field) => field.toJson()).toList();
@@ -164,7 +160,6 @@ class PaystackRequest {
   }
 }
 
-
 class CustomField {
   final String displayName;
   final String variableName;
@@ -173,11 +168,11 @@ class CustomField {
     required this.displayName,
     required this.variableName,
     required this.value,
-});
+  });
 
   Map<String, dynamic> toJson() => {
-    'display_name': displayName,
-    'variable_name': variableName,
-    'value': value,
-  };
+        'display_name': displayName,
+        'variable_name': variableName,
+        'value': value,
+      };
 }

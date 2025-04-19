@@ -63,19 +63,16 @@ class _PaystackWebviewState extends State<PaystackWebview> {
   Future<PayStackResponse> getAuthorizationUrl() async {
     try {
       //first check if we have to create a customer
-      if(widget.firstName != null
-          || widget.lastName != null){
+      if (widget.firstName != null || widget.lastName != null) {
         Customer customer = Customer(
           firstName: widget.firstName,
-            lastName: widget.lastName,
-            email: widget.email,
+          lastName: widget.lastName,
+          email: widget.email,
         );
         // We make a call to create a customer and thereafter proceed with the transaction.
-        await ApiClient().post(
-          paystackEndpoints.createCustomer,
-          data: customer.toJson(),
-          extraHeaders: {'Authorization': 'Bearer ${widget.secretKey}'}
-        );
+        await ApiClient().post(paystackEndpoints.createCustomer,
+            data: customer.toJson(),
+            extraHeaders: {'Authorization': 'Bearer ${widget.secretKey}'});
       }
 
       PaystackRequest request = PaystackRequest(
