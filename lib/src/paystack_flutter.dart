@@ -57,6 +57,12 @@ class PaystackFlutter {
     /// The amount to be charged in the smallest currency unit.
     required double amount,
 
+    /// The customers first name.
+    String? firstName,
+
+    ///The customers last name.
+    String? lastName,
+
     /// The customer's email address.
     required String email,
 
@@ -95,6 +101,8 @@ class PaystackFlutter {
         builder: (context) => PaystackWebview(
           secretKey: secretKey,
           email: email,
+          firstName: firstName,
+          lastName: lastName,
           amount: amount,
           reference: reference,
           showProgressBar: showProgressBar,

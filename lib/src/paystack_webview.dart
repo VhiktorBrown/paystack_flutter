@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:paystack_for_flutter/src/core/network/api_client.dart';
 import 'package:paystack_for_flutter/src/core/network/api_endpoints.dart';
 import 'package:paystack_for_flutter/src/core/utils/functions.dart';
+import 'package:paystack_for_flutter/src/models/customer.dart';
 import 'package:paystack_for_flutter/src/models/paystack_callback.dart';
 import 'package:paystack_for_flutter/src/models/paystack_request.dart';
 import 'package:paystack_for_flutter/src/models/paystack_response.dart';
@@ -9,7 +10,7 @@ import 'package:paystack_for_flutter/src/models/paystack_verification.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 // Created by Victor on 09/09/2024.
-// Modified by Victor on 09/22/24.
+// Modified by Victor on 04/18/24.
 // Copyright (c) 2024 Elite Developers.All rights reserved.
 
 class PaystackWebview extends StatefulWidget {
@@ -17,6 +18,8 @@ class PaystackWebview extends StatefulWidget {
     super.key,
     required this.secretKey,
     required this.amount,
+    this.firstName,
+    this.lastName,
     required this.email,
     this.reference,
     this.showProgressBar = true,
@@ -31,6 +34,8 @@ class PaystackWebview extends StatefulWidget {
 
   final String secretKey;
   final double amount;
+  final String? firstName;
+  final String? lastName;
   final String email;
   final String? reference;
   final bool? showProgressBar;
@@ -57,8 +62,26 @@ class _PaystackWebviewState extends State<PaystackWebview> {
 
   Future<PayStackResponse> getAuthorizationUrl() async {
     try {
+      //first check if we have to create a customer
+      if(widget.firstName != null
+          || widget.lastName != null){
+        Customer customer = Customer(
+          firstName: widget.firstName,
+            lastName: widget.lastName,
+            email: widget.email,
+        );
+        // We make a call to create a customer and thereafter proceed with the transaction.
+        await ApiClient().post(
+          paystackEndpoints.createCustomer,
+          data: customer.toJson(),
+          extraHeaders: {'Authorization': 'Bearer ${widget.secretKey}'}
+        );
+      }
+
       PaystackRequest request = PaystackRequest(
           amount: widget.amount,
+          firstName: widget.firstName,
+          lastName: widget.lastName,
           email: widget.email,
           callback: widget.callbackUrl,
           reference: widget.reference,
