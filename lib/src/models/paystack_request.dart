@@ -1,5 +1,7 @@
 // Created by Victor on 09/09/2024.
-// Copyright (c) 2024 Elite Developers.All rights reserved.
+// Modified by Victor on 04/19/2025.
+// Copyright (c) 2024 Elite Developers.
+// All rights reserved.
 
 /// This class represents a payment request object used for interacting with the Paystack payment gateway.
 /// It contains the necessary information to initiate a payment transaction.
@@ -7,6 +9,12 @@ class PaystackRequest {
   /// The amount to be charged in the smallest currency unit (e.g., kobo for Nigeria).
   /// This is a required field.
   final double amount;
+
+  /// The customer's first name.
+  final String? firstName;
+
+  /// The customer's last name.
+  final String? lastName;
 
   /// The customer's email address for the transaction.
   /// This is a required field.
@@ -51,6 +59,7 @@ class PaystackRequest {
   ///
   /// - [NGN] (Nigerian Naira)
   /// - [USD] (US Dollar)
+  /// - [EUR] (Euro)
   /// - [GHS] (Ghanaian Cedi)
   /// - [ZAR] (South African Rand)
   /// - [KES] (Kenyan Shilling)
@@ -64,6 +73,10 @@ class PaystackRequest {
   /// Creates a new PaystackRequest object.
   ///
   /// [amount] is required and represents the amount to be charged.
+  ///
+  /// [firstName] is optional and represents the first name of the customer.
+  ///
+  /// [lastName] is optional and represents the last name of the customer.
   ///
   /// [email] is required and represents the customer's email address.
   ///
@@ -79,6 +92,8 @@ class PaystackRequest {
   /// [metaData] is optional and represents any additional metadata you want to associate with the transaction.
   PaystackRequest({
     required this.amount,
+    this.firstName,
+    this.lastName,
     required this.email,
     this.reference,
     required this.callback,
@@ -110,6 +125,27 @@ class PaystackRequest {
       "callback_url": callback
     };
 
+    //check if the first name and last name are passed
+    List<CustomField> customFields = [];
+    if(firstName != null){
+      customFields.add(
+        CustomField(
+            displayName: 'First Name',
+            variableName: 'first_name',
+            value: firstName!)
+      );
+    }
+    if(lastName != null){
+      customFields.add(
+          CustomField(
+              displayName: 'Last Name',
+              variableName: 'last_name',
+              value: lastName!)
+      );
+    }
+    metaData['custom_fields'] =
+        customFields.map((field) => field.toJson()).toList();
+
     /// Only include optional fields if they have a value.
     if (reference != null) {
       baseJson["reference"] = reference;
@@ -126,4 +162,22 @@ class PaystackRequest {
 
     return baseJson;
   }
+}
+
+
+class CustomField {
+  final String displayName;
+  final String variableName;
+  final String value;
+  CustomField({
+    required this.displayName,
+    required this.variableName,
+    required this.value,
+});
+
+  Map<String, dynamic> toJson() => {
+    'display_name': displayName,
+    'variable_name': variableName,
+    'value': value,
+  };
 }

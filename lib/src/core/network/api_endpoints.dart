@@ -1,4 +1,5 @@
 // Created by Victor on 09/09/2024.
+// Modified by Victor on 04/19/2024.
 // Copyright (c) 2024 Elite Developers.All rights reserved.
 
 // base url
@@ -10,6 +11,7 @@ class _PaystackEndpoints {
   final String initializeTransaction = '$baseUrl/transaction/initialize';
   String verifyTransaction(String reference) =>
       '$baseUrl/transaction/verify/$reference';
+  final String createCustomer = '$baseUrl/customer';
 }
 
 //endpoints

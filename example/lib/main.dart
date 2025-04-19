@@ -41,10 +41,11 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 PaystackFlutter().pay(
                   context: context,
-                  secretKey:
-                      'YOUR_PAYSTACK_KEY', // Your Paystack secret key.
+                  secretKey: 'sk_test_4daeaa768f986a546516cd9a5d101f657ea4f1d3', // Your Paystack secret key.
                   amount:
                       60000, // The amount to be charged in the smallest currency unit. If amount is 600, multiply by 100(600*100)
+                  firstName: 'Elite',
+                  lastName: 'Developers',
                   email:
                       'theelitedevelopers1@gmail.com', // The customer's email address.
                   callbackUrl:

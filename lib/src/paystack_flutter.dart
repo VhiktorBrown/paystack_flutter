@@ -6,6 +6,7 @@ import 'package:paystack_for_flutter/src/models/paystack_callback.dart';
 import 'package:paystack_for_flutter/src/paystack_webview.dart';
 
 // Created by Victor on 09/09/2024.
+// Modified by Victor on 04/19/2025.
 // Copyright (c) 2024 Elite Developers.All rights reserved.
 
 /// The PaystackFlutter class provides a convenient way to integrate Paystack payments into your Flutter applications.
@@ -57,6 +58,12 @@ class PaystackFlutter {
     /// The amount to be charged in the smallest currency unit.
     required double amount,
 
+    /// The customers first name.
+    String? firstName,
+
+    ///The customers last name.
+    String? lastName,
+
     /// The customer's email address.
     required String email,
 
@@ -95,6 +102,8 @@ class PaystackFlutter {
         builder: (context) => PaystackWebview(
           secretKey: secretKey,
           email: email,
+          firstName: firstName,
+          lastName: lastName,
           amount: amount,
           reference: reference,
           showProgressBar: showProgressBar,

@@ -18,14 +18,15 @@ The Flutter package that makes it super easy to integrate Paystack's payment gat
 | <img src="https://raw.githubusercontent.com/VhiktorBrown/paystack_flutter/master/screenshots/pay_with_bank.png" height="400" width="200"/> | <img src="https://raw.githubusercontent.com/VhiktorBrown/paystack_flutter/master/screenshots/payment_success.png" height="400" width="200"/> |
 
 ## Significant Changes:
-* Fixed `showProgressBar` argument not being used in implementation. Now, whatever value you set is used.
-* Clicking on `Cancel Payment` on Paystack payment page now cancels the payment and closes the page, calling the onCancelled callback.
+* You can now pass in customer's First name and Last name and have it saved on Paystack's end and you can see them from the dashboard.
+* Support for EURO currency added. Just pass Currency.EUR.
+* The README has been updated with instructions on how to test out the Bank transfer feature in the Test environment.
 
 
 ## :dart: Add dependency to pubspec.yaml:
 ``` dart
 dependencies:
-paystack_for_flutter: 1.0.2
+paystack_for_flutter: 1.0.3
 ```
 
 ## Then, import like this:
@@ -40,7 +41,9 @@ PaystackFlutter().pay(
     context: context,
     secretKey: 'YOUR_PAYSTACK_SECRET_KEY', // Your Paystack secret key gotten from your Paystack dashboard.
     amount: 60000, // The amount to be charged in the smallest currency unit. If amount is 600, multiply by 100(600*100)
-    email: 'theelitedevelopers1@gmail.com', // The customer's email address.
+    email: 'customeremail@gmail.com', // The customer's email address.
+    firstName: 'Victor', // Customer's first name
+    lastName: 'Ebuka', // Customer's last name
     callbackUrl: 'https://callback.com', // The URL to which Paystack will redirect the user after the transaction.
     showProgressBar: true, // If true, it shows progress bar to inform user an action is in progress when getting checkout link from Paystack.
     paymentOptions: [PaymentOption.card, PaymentOption.bankTransfer, PaymentOption.mobileMoney],
@@ -90,7 +93,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     context: context,
                     secretKey: 'YOUR_PAYSTACK_SECRET_KEY', // Your Paystack secret key.
                     amount: 60000, // The amount to be charged in the smallest currency unit. If amount is 600, multiply by 100(600*100)
-                    email: 'theelitedevelopers1@gmail.com', // The customer's email address.
+                    email: 'customeremail@gmail.com', // The customer's email address.
+                    firstName: 'Victor', // Customer's first name
+                    lastName: 'Ebuka', // Customer's last name
                     callbackUrl: 'https://callback.com', // The URL to which Paystack will redirect the user after the transaction.
                     showProgressBar: true, // If true, it shows progress bar to inform user an action is in progress when getting checkout link from Paystack.
                     paymentOptions: [PaymentOption.card, PaymentOption.bankTransfer, PaymentOption.mobileMoney],
@@ -138,14 +143,17 @@ Note that some of the parameters are optional. Below is a table giving exact det
 | context            | BuildContext               | Yes      | Current build context                                                                                                                                                                                                                                                                                                               |
 | secretKey          | String                     | Yes      | Your Paystack's secret key. You can get this from your Paystack dashboard under Settings. Try not to save your key locally.                                                                                                                                                                                                         |
 | amount             | double                     | Yes      | The amount to be charged in the smallest currency unit. If amount is 600, multiply by `100`(600*100)                                                                                                                                                                                                                                |
+| email              | String                     | Yes      | Your customer's email                                                                                                                                                                                                                                                                                                               |
 | callbackUrl        | String                     | Yes      | The URL to which Paystack will redirect the user after the transaction. Your callback can be anything. Even if you have set the callbackUrl on your Paystack dashboard and you set something different in your code, Paystack overrides the one set on your dashboard. Your callback can be: https://callback.com or any other URL. |
 | onSuccess          | Function(PaystackCallback) | Yes      | A callback function to be called when the payment is successful. This function returns an instance of a PaystackCallback class that has properties like reference and accessCode that you can access to confirm from your backend or do anything with.                                                                              |
 | onCancelled        | Function(PaystackCallback) | Yes      | A callback function to be called when the payment is unsuccessful. This function returns an instance of a PaystackCallback class that has properties like reference and accessCode that you can access to confirm if transaction was truly unsuccessful.                                                                            |
+| firstName          | String                     | No       | Customer's first name(You'll find it saved on your Paystack dashboard whenever you pass this for a customer)                                                                                                                                                                                                                        |
+| lastName           | String                     | No       | Customer's last name                                                                                                                                                                                                                                                                                                                |
 | reference          | String                     | No       | A custom reference for the transaction. If you do not pass a reference, Paystack will generate one automatically for you.                                                                                                                                                                                                           |
 | confirmTransaction | bool                       | No       | If set to true, the package checks with paystack using the reference to confirm if the transaction was truly successful. In most cases, you'll have to do this through the backend, but the package gives you the option to do it in your app. Default value is `FALSE`                                                             |
 | metadata           | dynamic(json)              | No       | Additional metadata to be associated with the transaction. This is usually the goods/services your customer is trying to make payment for. It's expected in json format. It makes it easy to provide value to your customer by just using the reference to get the data after confirming successful payment.                        |
 | paymentOptions     | List<PaymentOption(enum)>  | No       | A list of payment options allowed for the transaction. Please, `leave empty` or don't include if you want to use the payment options set from your dashboard. To use: [`PaymentOption.card`, `PaymentOption.bankTransfer`, `PaymentOption.bank`, `PaymentOption.ussd`]                                                              |
-| currency           | enum                       | No       | The currency used for the transaction. If omitted, it uses the default Currency of the country associated with your Paystack account. Example: Currency.NGN. There are 5 currency enum options: `NGN(Naira)`, `USD(Dollars)`, `GHS(Ghanian Cedi)`, `ZAR(South African Rand)`, `KES(Kenyan Shilling)`                                |
+| currency           | enum                       | No       | The currency used for the transaction. If omitted, it uses the default Currency of the country associated with your Paystack account. Example: Currency.NGN. There are 5 currency enum options: `NGN(Naira)`, `USD(Dollars)`, `EUR(Euro)`, `GHS(Ghanian Cedi)`, `ZAR(South African Rand)`, `KES(Kenyan Shilling)`                   |
 | showProgressBar    | bool                       | No       | If true, it shows progress bar to inform user an action is in progress when getting checkout link from Paystack. Default value is `TRUE`                                                                                                                                                                                            |
 
 
@@ -184,12 +192,13 @@ Here's the list of currency that Paystack supports:
   ///     - **Supported Currencies:**
   ///       - [Currency.NGN] (Nigerian Naira)
   ///       - [Currency.USD] (US Dollar)
+  ///       - [Currency.EUR] (Euro)
   ///       - [Currency.GHS] (Ghanaian Cedi)
   ///       - [Currency.ZAR] (South African Rand)
   ///       - [Currency.KES] (Kenyan Shilling)
 ```
-## :grey_exclamation: Bank Transfer Unresponsive in Sandbox ENV(But Don't Fret)
-Please, don't fret if the `Pay with Bank Transfer` option just keeps loading indefinitely after you click on the `I have sent the money` button. Paystack Bank Transfer option doesn't work properly in the sandbox environment but when you use your `LIVE KEY`, it works fine.
+## :grey_exclamation: Bank Transfer Payment Method(Testing it out)
+It is possible to test the Bank transfer feature in Test mode. All you have to do is visit this [Paystack's site](https://demobank.paystackintegrations.com/), enter the account number you were provided and continue. Enter 0000 as the PIN and you'll see that the transaction will be confirmed immediately from your app.
 
 ## :white_check_mark: Success Callback(After successful payment)
 Paystack recommends that you use the reference to make a call to your backend to confirm if transaction was indeed successful before you provide value to your customer.

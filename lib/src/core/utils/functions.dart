@@ -35,6 +35,9 @@ enum Currency {
   /// United States Dollar (USD).
   USD,
 
+  /// Euro
+  EUR,
+
   /// Ghanaian Cedi (GHS).
   GHS,
 
@@ -95,6 +98,8 @@ extension CurrencyExtension on Currency {
         return "NGN";
       case Currency.USD:
         return "USD";
+      case Currency.EUR:
+        return "EUR";
       case Currency.GHS:
         return "GHS";
       case Currency.ZAR:
@@ -102,7 +107,7 @@ extension CurrencyExtension on Currency {
       case Currency.KES:
         return "KES";
       default:
-        return "Unknown";
+        return "NGN";
     }
   }
 }
