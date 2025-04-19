@@ -130,29 +130,23 @@ class PaystackRequest {
     if(firstName != null){
       customFields.add(
         CustomField(
-            displayName: 'Customer Name',
-            variableName: 'customer_name',
+            displayName: 'First Name',
+            variableName: 'first_name',
             value: firstName!)
       );
     }
-    // if(lastName != null){
-    //   customFields.add(
-    //       CustomField(
-    //           displayName: 'Last Name',
-    //           variableName: 'last_name',
-    //           value: lastName!)
-    //   );
-    // }
+    if(lastName != null){
+      customFields.add(
+          CustomField(
+              displayName: 'Last Name',
+              variableName: 'last_name',
+              value: lastName!)
+      );
+    }
     metaData['custom_fields'] =
         customFields.map((field) => field.toJson()).toList();
 
     /// Only include optional fields if they have a value.
-    // if(firstName != null){
-    //   baseJson["first_name"] = firstName;
-    // }
-    // if(lastName != null){
-    //   baseJson["last_name"] = lastName;
-    // }
     if (reference != null) {
       baseJson["reference"] = reference;
     }
